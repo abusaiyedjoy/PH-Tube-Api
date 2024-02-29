@@ -1,8 +1,15 @@
 const buttonCategoryContainer = document.getElementById("button-catagory-container");
 const cardContainer = document.getElementById("card-container");
 const noContent = document.getElementById("no_content");
+let sortByView = document.getElementById("sort-by-view");
 let autoCategory=1000;
+let sortView=false;
 
+sortByView.addEventListener("click", () => {
+    sortView=true;
+    createButton(autoCategory, sortView);
+    sortByView.classList.add('bg-red-500','text-white')
+})
 const catagorySection=()=>{
     const url='https://openapi.programming-hero.com/api/videos/categories'
      fetch(url)
@@ -19,6 +26,7 @@ const catagorySection=()=>{
                     const clickbtns=document.querySelectorAll('.click_button');
                     for(const btns of clickbtns){
                         btns.classList.remove('bg-red-500','text-white')
+                        sortByView.classList.remove('bg-red-500','text-white')
                     }
                     btn.classList.add('bg-red-500','text-white')
 
@@ -27,12 +35,21 @@ const catagorySection=()=>{
          })
          
 }
-const createButton=((categoryID)=>{
+const createButton=((categoryID, sortView)=>{
     autoCategory=categoryID;
     const url=`https://openapi.programming-hero.com/api/videos/category/${categoryID}`
     fetch(url)
     .then( (res)=>res.json())
     .then(({data})=>{
+        if(sortView){
+            data.sort((a,b)=>{
+               const firstView=a.others?.views;
+               const secondView=b.others?.views;
+               const totalfirstview = parseFloat(firstView.replace('k', '') || 0);
+               const totalsecondview = parseFloat(secondView.replace('k', '') || 0);
+               return totalsecondview-totalfirstview;
+            })
+        }
         if(data.length==0){
             noContent.classList.remove('hidden')
         }else{
@@ -67,4 +84,4 @@ const createButton=((categoryID)=>{
     })})
     
     catagorySection();
-    createButton(autoCategory)
+    createButton(autoCategory, sortView)
