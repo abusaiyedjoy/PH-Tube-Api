@@ -16,7 +16,7 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-      </style>
+    </style>
 </head>
 
 <body>
@@ -28,38 +28,32 @@
                 </div>
             </div>
             <div class="navbar-center left">
-                <button class=" bg-gray-200 px-2 py-1 md:px-5 md:py-3 ml-4 md:ml-0 rounded-md normal-case text-xl"  id="order">Sort by view</button>
+                <button class=" bg-gray-200 px-2 py-1 md:px-5 md:py-3 ml-4 md:ml-0 rounded-md normal-case text-xl"
+                    id="order">Sort by view</button>
             </div>
             <div class="navbar-end">
-                <button onclick="blogfile()" class=" bg-[#FF1F3D] px-5 py-3 text-white font-medium rounded-md btn-error"><a href="blog.html">Blog</a></button>
+                <button onclick="blogfile()"
+                    class=" bg-[#FF1F3D] px-5 py-3 text-white font-medium rounded-md btn-error"><a
+                        href="blog.html">Blog</a></button>
             </div>
         </div>
         <hr class="bg-gray-300 border-dashed my-4">
         <div class="flex justify-center my-8">
             <div class="tabs grid md:grid-cols-4 grid-cols-2 gap-4" id="button-catagory-container">
-                
+
             </div>
         </div>
     </header>
     <main class="container mx-auto">
-        <div id="card-container" class="">
-            
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <figure class="rounded-xl"><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="" /></figure>
-                <div class=" flex gap-2 mx-2 my-4">
-                    <div>
-                        <img class="w-[52px]" src="./Images/Icon.png" alt="">
-                    </div>
-                    <div>
-                        <h2 class="card-title">Name<div class="badge badge-secondary">NEW</div>
-                          </h2>
-                          <p>If a dog chews</p>
-                          <p>100k views</p>
-                    </div>
-                </div>
-            </div>
+        <div id="card-container" class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+
+        </div>
+        <div id="no_content" class="hidden flex flex-col justify-center items-center">
+            <div><img src="./Images/Icon.png" alt=""></div>
+            <h1 class="text-4xl font-bold mt-8">Ops!! There are no content are available in here.</h1>
         </div>
     </main>
     <script src="./index.js"></script>
 </body>
+
 </html>
